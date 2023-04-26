@@ -9,5 +9,6 @@
     <Grid>
         <Label>123</Label>
         <Button Height="200" Width="20"></Button>
+        <TextBox Height="200" Width="20">Hello</TextBox>
     </Grid>
 </Window>
