@@ -8,10 +8,7 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Label>123</Label>
-<<<<<<< Updated upstream
-=======
         <Button Height="200" Width="20"></Button>
         <TextBox Height="200" Width="20">Hello</TextBox>
->>>>>>> Stashed changes
     </Grid>
 </Window>
