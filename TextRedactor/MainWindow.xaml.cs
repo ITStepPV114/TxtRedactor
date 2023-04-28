@@ -24,5 +24,18 @@ namespace TextRedactor
         {
             InitializeComponent();
         }
+
+        private void MenuItem_Open_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void MenuItem_Save_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void MenuItem_SaveAs_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
