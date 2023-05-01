@@ -5,10 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TextRedactor"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Label>123</Label>
-        <Button Height="200" Width="20"></Button>
-        <TextBox Height="200" Width="20">Hello</TextBox>
-    </Grid>
+        Title="Meta TextRedactor" Height="450" Width="800">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="File">
+                <MenuItem Header="Open" Click="MenuItem_Open_Click"/>
+                <MenuItem Header="Save" Click="MenuItem_Save_Click"/>
+                <MenuItem Header="Save As" Click="MenuItem_SaveAs_Click"/>
+            </MenuItem>
+        </Menu>
+        <TextBox Name="textBox" AcceptsReturn="True" AcceptsTab="True" DockPanel.Dock="Bottom"/>
+    </DockPanel>
 </Window>
