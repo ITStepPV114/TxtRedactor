@@ -7,6 +7,23 @@
         mc:Ignorable="d"
         Title="Font" Height="300" Width="400">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Font:" Grid.Row="0" Grid.Column="0"/>
+        <ComboBox x:Name="fontComboBox" Grid.Row="0" Grid.Column="1" Width="120" SelectionChanged="fontComboBox_SelectionChanged">
+            <ComboBoxItem Content="Arial"/>
+            <ComboBoxItem Content="Times New Roman"/>
+            <ComboBoxItem Content="Verdana"/>
+        </ComboBox>
+        <Label Content="Font Size:" Grid.Row="1" Grid.Column="0"/>
+        <TextBox x:Name="fontSizeTextBox" Grid.Row="1" Grid.Column="1" Width="120" TextChanged="fontSizeTextBox_TextChanged"/>
+        <RichTextBox x:Name="richTextBox" Grid.Row="2" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>

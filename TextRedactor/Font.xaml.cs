@@ -19,9 +19,27 @@ namespace TextRedactor
     /// </summary>
     public partial class Font : Window
     {
-        public Font()
+        public string selectedText { get; set; }
+        public Font(RichTextBox richTextBox)
         {
             InitializeComponent();
+            selectedText = richTextBox.Selection.Text;
+        }
+
+        private void fontComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string fontName = ((ComboBoxItem)fontComboBox.SelectedItem).Content.ToString();
+            richTextBox.Selection.ApplyPropertyValue(TextElement.FontFamilyProperty, new FontFamily(fontName));
+        }
+
+        private void fontSizeTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string fontSizeString = fontSizeTextBox.Text;
+            double fontSize;
+            if (Double.TryParse(fontSizeString, out fontSize))
+            {
+                richTextBox.Selection.ApplyPropertyValue(TextElement.FontSizeProperty, fontSize);
+            }
         }
     }
 }
