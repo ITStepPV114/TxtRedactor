@@ -67,34 +67,31 @@ namespace TextRedactor
             string fileText = new TextRange(RichTextBox.Document.ContentStart, RichTextBox.Document.ContentEnd).Text;
             if (op.ShowDialog() == true)
             {
-             
+
                 File.WriteAllText(op.FileName, fileText);
             }
-        }
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void MenuItem_Click_Font(object sender, RoutedEventArgs e)
         {
-            FontDialog fontDialog = new FontDialog();
+            //_________BROKEN
+            //FontDialog fontDialog = new FontDialog();
 
-            System.Drawing.Font currentFont = new System.Drawing.Font(
-                richTextBox.Selection.GetPropertyValue(TextElement.FontFamilyProperty).ToString(),
-                (double)richTextBox.Selection.GetPropertyValue(TextElement.FontSizeProperty),
-                (richTextBox.Selection.GetPropertyValue(TextElement.FontStyleProperty) != null) && ((FontStyle)richTextBox.Selection.GetPropertyValue(TextElement.FontStyleProperty)) == FontStyles.Italic ? FontStyle.Italic : FontStyle.Regular,
-                GraphicsUnit.Pixel);
-            fontDialog.Font = currentFont.ToFont();
+            //System.Drawing.Font currentFont = new System.Drawing.Font(
+            //    richTextBox.Selection.GetPropertyValue(TextElement.FontFamilyProperty).ToString(),
+            //    (double)richTextBox.Selection.GetPropertyValue(TextElement.FontSizeProperty),
+            //    (richTextBox.Selection.GetPropertyValue(TextElement.FontStyleProperty) != null) && ((FontStyle)richTextBox.Selection.GetPropertyValue(TextElement.FontStyleProperty)) == FontStyles.Italic ? FontStyle.Italic : FontStyle.Regular,
+            //    GraphicsUnit.Pixel);
+            //fontDialog.Font = currentFont.ToFont();
             
-            if (fontDialog.ShowDialog() == DialogResult.OK)
-            { 
-                richTextBox.Selection.ApplyPropertyValue(TextElement.FontFamilyProperty, new FontFamily(fontDialog.Font.Name));
-                richTextBox.Selection.ApplyPropertyValue(TextElement.FontSizeProperty, fontDialog.Font.Size);
-                richTextBox.Selection.ApplyPropertyValue(TextElement.FontStyleProperty, (fontDialog.Font.Style & FontStyle.Italic) == FontStyle.Italic ? FontStyles.Italic : FontStyles.Normal);
-                richTextBox.Selection.ApplyPropertyValue(TextElement.FontWeightProperty, (fontDialog.Font.Style & FontStyle.Bold) == FontStyle.Bold ? FontWeights.Bold : FontWeights.Normal);
-                richTextBox.Selection.ApplyPropertyValue(TextElement.TextDecorationsProperty, (fontDialog.Font.Underline) ? TextDecorations.Underline : null);
-            }
+            //if (fontDialog.ShowDialog() == DialogResult.OK)
+            //{ 
+            //    richTextBox.Selection.ApplyPropertyValue(TextElement.FontFamilyProperty, new FontFamily(fontDialog.Font.Name));
+            //    richTextBox.Selection.ApplyPropertyValue(TextElement.FontSizeProperty, fontDialog.Font.Size);
+            //    richTextBox.Selection.ApplyPropertyValue(TextElement.FontStyleProperty, (fontDialog.Font.Style & FontStyle.Italic) == FontStyle.Italic ? FontStyles.Italic : FontStyles.Normal);
+            //    richTextBox.Selection.ApplyPropertyValue(TextElement.FontWeightProperty, (fontDialog.Font.Style & FontStyle.Bold) == FontStyle.Bold ? FontWeights.Bold : FontWeights.Normal);
+            //    richTextBox.Selection.ApplyPropertyValue(TextElement.TextDecorationsProperty, (fontDialog.Font.Underline) ? TextDecorations.Underline : null);
+            //}
         }
     }
 }
