@@ -26,5 +26,10 @@ namespace TextRedactor
             var menuControl = new MenuControl();
             mainPanel.Children.Add(menuControl); 
         }
+
+        private void rtbEditor_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
