@@ -7,7 +7,11 @@
         mc:Ignorable="d"
         x:Name="mainWindow"
         Title="Meta TextRedactor" Height="450" Width="800">
-    <DockPanel x:Name="mainPanel">
-       
-    </DockPanel>
+    <StackPanel>
+        <Grid x:Name="mainPanel"></Grid>
+
+        <RichTextBox Name="rtbEditor" SelectionChanged="rtbEditor_SelectionChanged">
+            
+        </RichTextBox>
+    </StackPanel>
 </Window>
