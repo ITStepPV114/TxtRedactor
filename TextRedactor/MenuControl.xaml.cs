@@ -39,5 +39,10 @@ namespace TextRedactor
         {
 
         }
+
+        private void MenuItem_Click_Font(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

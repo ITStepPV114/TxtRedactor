@@ -16,7 +16,8 @@
         </Menu>
         <Menu>
             <MenuItem Header="Edit">
-
+                <MenuItem Header="Font"  Click="MenuItem_Click_Font"/>
+                <MenuItem Header="Paragraph" />
             </MenuItem>
         </Menu>
         <Menu>
