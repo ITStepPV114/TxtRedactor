@@ -16,15 +16,28 @@ using System.Windows.Shapes;
 namespace TextRedactor
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MenuControl.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MenuControl : UserControl
     {
-        public MainWindow()
+        public MenuControl()
         {
             InitializeComponent();
-            var menuControl = new MenuControl();
-            mainPanel.Children.Add(menuControl); 
+        }
+
+        private void MenuItem_Click_open(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuItem_Click_save(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuItem_Click_saveAs(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
