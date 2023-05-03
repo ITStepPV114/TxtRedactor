@@ -8,7 +8,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <DockPanel>
         <Menu>
-            <MenuItem Header="File">
+            <MenuItem Header="File" Click="MenuItem_Click">
                 <MenuItem Header="Open" Click="MenuItem_Click_open"/>
                 <MenuItem Header="Save" Click="MenuItem_Click_save"/>
                 <MenuItem Header="Save As" Click="MenuItem_Click_saveAs"/>
