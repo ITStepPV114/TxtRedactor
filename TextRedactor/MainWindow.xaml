@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TextRedactor"
         mc:Ignorable="d"
+        x:Name="mainWindow"
         Title="Meta TextRedactor" Height="450" Width="800">
-    <DockPanel>
-        
-        <TextBox Name="textBox" AcceptsReturn="True" AcceptsTab="True" DockPanel.Dock="Bottom"/>
+    <DockPanel x:Name="mainPanel">
+       
     </DockPanel>
 </Window>

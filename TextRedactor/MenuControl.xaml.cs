@@ -10,18 +10,34 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace TextRedactor
 {
     /// <summary>
-    /// Interaction logic for TextEditorToolbar.xaml
+    /// Interaction logic for MenuControl.xaml
     /// </summary>
-    public partial class TextEditorToolbar : Window
+    public partial class MenuControl : UserControl
     {
-        public TextEditorToolbar()
+        public MenuControl()
         {
             InitializeComponent();
+        }
+
+        private void MenuItem_Click_open(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuItem_Click_save(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuItem_Click_saveAs(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
