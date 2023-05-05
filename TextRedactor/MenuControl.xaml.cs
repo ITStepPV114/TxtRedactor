@@ -57,7 +57,7 @@ namespace TextRedactor
                     {
                         fileContent = reader.ReadToEnd();
 
-                        RichTextBox.Document.Blocks.Add(new Paragraph(new Run(fileContent)));
+                        RichTextBox.Document.Blocks.Add(new System.Windows.Documents.Paragraph(new Run(fileContent)));
                     }
                 }else if(System.IO.Path.GetExtension(op.FileName) == ".txt")
                 {
@@ -109,7 +109,7 @@ namespace TextRedactor
             System.Windows.Forms.FontDialog fontDialog = new System.Windows.Forms.FontDialog();   
             if (fontDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                RichTextBox.Selection.ApplyPropertyValue(TextElement.FontFamilyProperty, new FontFamily(fontDialog.Font.Name));
+                RichTextBox.Selection.ApplyPropertyValue(TextElement.FontFamilyProperty, new System.Windows.Media.FontFamily(fontDialog.Font.Name));
                 RichTextBox.Selection.ApplyPropertyValue(TextElement.FontSizeProperty, (double)fontDialog.Font.Size);
                 RichTextBox.Selection.ApplyPropertyValue(TextElement.FontStyleProperty, (fontDialog.Font.Style & System.Drawing.FontStyle.Italic) == System.Drawing.FontStyle.Italic ? FontStyles.Italic : FontStyles.Normal);
                 RichTextBox.Selection.ApplyPropertyValue(TextElement.FontWeightProperty, (fontDialog.Font.Style & System.Drawing.FontStyle.Bold) == System.Drawing.FontStyle.Bold ? FontWeights.Bold : FontWeights.Normal);
@@ -117,6 +117,9 @@ namespace TextRedactor
             }
         }
 
+        private void MenuItem_Print(object sender, RoutedEventArgs e)
+        {
 
+        }
     }
 }
