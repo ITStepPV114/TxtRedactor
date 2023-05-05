@@ -78,15 +78,11 @@ namespace TextRedactor
 
         private void MenuItem_Click_Font(object sender, RoutedEventArgs e)
         {
-            System.Windows.Forms.FontDialog fontDialog = new System.Windows.Forms.FontDialog();
-
-            TextRange allTextRange = new TextRange(RichTextBox.Document.ContentStart, RichTextBox.Document.ContentEnd);
-            
-            
+            System.Windows.Forms.FontDialog fontDialog = new System.Windows.Forms.FontDialog();   
             if (fontDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 RichTextBox.Selection.ApplyPropertyValue(TextElement.FontFamilyProperty, new FontFamily(fontDialog.Font.Name));
-                RichTextBox.Selection.ApplyPropertyValue(RichTextBox.FontSizeProperty, (double)fontDialog.Font.Size);
+                RichTextBox.Selection.ApplyPropertyValue(TextElement.FontSizeProperty, (double)fontDialog.Font.Size);
                 RichTextBox.Selection.ApplyPropertyValue(TextElement.FontStyleProperty, (fontDialog.Font.Style & System.Drawing.FontStyle.Italic) == System.Drawing.FontStyle.Italic ? FontStyles.Italic : FontStyles.Normal);
                 RichTextBox.Selection.ApplyPropertyValue(TextElement.FontWeightProperty, (fontDialog.Font.Style & System.Drawing.FontStyle.Bold) == System.Drawing.FontStyle.Bold ? FontWeights.Bold : FontWeights.Normal);
                 RichTextBox.Selection.ApplyPropertyValue(Inline.TextDecorationsProperty, (fontDialog.Font.Underline) ? TextDecorations.Underline : null);
