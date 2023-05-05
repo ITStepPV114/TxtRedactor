@@ -5,8 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TextRedactor"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Label>123</Label>
-    </Grid>
+        x:Name="mainWindow"
+        Title="TypoTamer" Height="450" Width="800">
+    <StackPanel>
+        <Grid x:Name="mainPanel"></Grid>
+
+        <RichTextBox Name="rtbEditor" SelectionChanged="rtbEditor_SelectionChanged">
+            
+        </RichTextBox>
+    </StackPanel>
 </Window>
