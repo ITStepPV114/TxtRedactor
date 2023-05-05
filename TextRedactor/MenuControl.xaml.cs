@@ -16,7 +16,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.ComponentModel;
+using iTextSharp.text.pdf;
+using iTextSharp.text.pdf.parser;
+using iTextSharp.text;
+using System.Drawing;
+using System.Drawing.Printing;
 
 
 
@@ -33,7 +37,7 @@ namespace TextRedactor
             InitializeComponent();
             RichTextBox = richTextBox;
         }
-        
+        string temp;
         private void MenuItem_Click_open(object sender, RoutedEventArgs e)
         {
             var fileContent = string.Empty;
@@ -42,24 +46,47 @@ namespace TextRedactor
             Microsoft.Win32.OpenFileDialog op = new Microsoft.Win32.OpenFileDialog();
             if (op.ShowDialog() == true)
             {
-                filePath = op.FileName;
-                //MessageBox.Show(filePath);
-                var fileStream = op.OpenFile();
-                //TextRange textRange = new TextRange();
-                using (StreamReader reader = new StreamReader(fileStream))
+                if (System.IO.Path.GetExtension(op.FileName) == ".txt")
                 {
-                    fileContent = reader.ReadToEnd();
-                    
-                    RichTextBox.Document.Blocks.Add(new Paragraph(new Run(fileContent)));
+                    temp = op.FileName;
+                    filePath = op.FileName;
+                    //MessageBox.Show(filePath);
+                    var fileStream = op.OpenFile();
+                    //TextRange textRange = new TextRange();
+                    using (StreamReader reader = new StreamReader(fileStream))
+                    {
+                        fileContent = reader.ReadToEnd();
+
+                        RichTextBox.Document.Blocks.Add(new Paragraph(new Run(fileContent)));
+                    }
+                }else if(System.IO.Path.GetExtension(op.FileName) == ".txt")
+                {
+                    LoadPdf(op.FileName);
                 }
             }       
             
             
         }
+        private void LoadPdf(string filename)
+        {
+            // Clear the existing text from the RichTextBox
+            RichTextBox.Document.Blocks.Clear();
+
+            // Load the PDF file
+            using (PdfReader reader = new PdfReader(filename))
+            {
+                // Extract the text from each page of the PDF file
+                for (int i = 1; i <= reader.NumberOfPages; i++)
+                {
+                    string text = PdfTextExtractor.GetTextFromPage(reader, i);
+                    RichTextBox.AppendText(text);
+                }
+            }
+        }
 
         private void MenuItem_Click_save(object sender, RoutedEventArgs e)
         {
-            string filePath = "C:\\Users\\dkhpr\\Desktop\\1\\first.txt";            
+            string filePath = temp;            
             string fileText = new TextRange(RichTextBox.Document.ContentStart, RichTextBox.Document.ContentEnd).Text; 
             File.WriteAllText(filePath, fileText);
         }
@@ -67,7 +94,8 @@ namespace TextRedactor
         private void MenuItem_Click_saveAs(object sender, RoutedEventArgs e)
         {
             Microsoft.Win32.SaveFileDialog op = new Microsoft.Win32.SaveFileDialog();
-            op.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+            op.Filter = "PDF files (*.pdf)|*.pdf|Text files (*.txt)|*.txt|All files (*.*)|*.*";
+            
             string fileText = new TextRange(RichTextBox.Document.ContentStart, RichTextBox.Document.ContentEnd).Text;
             if (op.ShowDialog() == true)
             {
@@ -88,5 +116,7 @@ namespace TextRedactor
                 RichTextBox.Selection.ApplyPropertyValue(Inline.TextDecorationsProperty, (fontDialog.Font.Underline) ? TextDecorations.Underline : null);
             }
         }
+
+
     }
 }
