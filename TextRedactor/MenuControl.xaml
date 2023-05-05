@@ -8,7 +8,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <DockPanel>
         <Menu>
-            <MenuItem Header="File" Click="MenuItem_Click">
+            <MenuItem Header="File">
                 <MenuItem Header="Open" Click="MenuItem_Click_open"/>
                 <MenuItem Header="Save" Click="MenuItem_Click_save"/>
                 <MenuItem Header="Save As" Click="MenuItem_Click_saveAs"/>
@@ -17,6 +17,7 @@
         <Menu>
             <MenuItem Header="Edit">
                 <MenuItem Header="Print" Click="MenuItem_Print"/>
+                <MenuItem Header="Font"  Click="MenuItem_Click_Font"/>
             </MenuItem>
         </Menu>
         <Menu>

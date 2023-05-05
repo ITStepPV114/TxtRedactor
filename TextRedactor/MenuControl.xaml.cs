@@ -1,8 +1,9 @@
-﻿using Microsoft.Win32;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,8 @@ using iTextSharp.text.pdf.parser;
 using iTextSharp.text;
 using System.Drawing;
 using System.Drawing.Printing;
+
+
 
 namespace TextRedactor
 {
@@ -54,7 +57,7 @@ namespace TextRedactor
                     {
                         fileContent = reader.ReadToEnd();
 
-                        RichTextBox.Document.Blocks.Add(new Paragraph(new Run(fileContent)));
+                        RichTextBox.Document.Blocks.Add(new System.Windows.Documents.Paragraph(new Run(fileContent)));
                     }
                 }else if(System.IO.Path.GetExtension(op.FileName) == ".txt")
                 {
@@ -96,63 +99,27 @@ namespace TextRedactor
             string fileText = new TextRange(RichTextBox.Document.ContentStart, RichTextBox.Document.ContentEnd).Text;
             if (op.ShowDialog() == true)
             {
-             
+
                 File.WriteAllText(op.FileName, fileText);
             }
         }
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
 
+        private void MenuItem_Click_Font(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Forms.FontDialog fontDialog = new System.Windows.Forms.FontDialog();   
+            if (fontDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                RichTextBox.Selection.ApplyPropertyValue(TextElement.FontFamilyProperty, new System.Windows.Media.FontFamily(fontDialog.Font.Name));
+                RichTextBox.Selection.ApplyPropertyValue(TextElement.FontSizeProperty, (double)fontDialog.Font.Size);
+                RichTextBox.Selection.ApplyPropertyValue(TextElement.FontStyleProperty, (fontDialog.Font.Style & System.Drawing.FontStyle.Italic) == System.Drawing.FontStyle.Italic ? FontStyles.Italic : FontStyles.Normal);
+                RichTextBox.Selection.ApplyPropertyValue(TextElement.FontWeightProperty, (fontDialog.Font.Style & System.Drawing.FontStyle.Bold) == System.Drawing.FontStyle.Bold ? FontWeights.Bold : FontWeights.Normal);
+                RichTextBox.Selection.ApplyPropertyValue(Inline.TextDecorationsProperty, (fontDialog.Font.Underline) ? TextDecorations.Underline : null);
+            }
         }
 
         private void MenuItem_Print(object sender, RoutedEventArgs e)
         {
-            PrintDocument printDocument = new PrintDocument();
 
-            // Set the PrintPage event handler for the PrintDocument
-            printDocument.PrintPage += new PrintPageEventHandler(PrintPageHandler);
-
-            // Print the document
-            printDocument.Print();
-
-            // Define the PrintPage event handler
-            private void PrintPageHandler(object sender, PrintPageEventArgs e)
-            {
-                // Get the contents of the RichTextBox
-                string contents = richTextBox1.Text;
-
-                // Create a new Font object
-                Font font = new Font("Arial", 12);
-
-                // Calculate the size of the text
-                SizeF textSize = e.Graphics.MeasureString(contents, font);
-
-                // Calculate the number of lines that will fit on the page
-                int linesPerPage = (int)(e.MarginBounds.Height / textSize.Height);
-
-                // Initialize the line count and the offset
-                int lineCount = 0;
-                int yOffset = 0;
-
-                // Print the text to the page
-                while (lineCount < linesPerPage && yOffset < richTextBox1.ClientSize.Height)
-                {
-                    string line = richTextBox1.Lines[lineCount];
-                    yOffset = (int)(lineCount * textSize.Height);
-                    e.Graphics.DrawString(line, font, Brushes.Black, e.MarginBounds.Left, e.MarginBounds.Top + yOffset, new StringFormat());
-                    lineCount++;
-                }
-
-                // Check if there are more pages to print
-                if (yOffset < richTextBox1.ClientSize.Height)
-                {
-                    e.HasMorePages = true;
-                }
-                else
-                {
-                    e.HasMorePages = false;
-                }
-            }
         }
     }
 }

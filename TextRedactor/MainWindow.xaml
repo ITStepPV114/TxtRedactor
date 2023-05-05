@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TextRedactor"
         mc:Ignorable="d"
         x:Name="mainWindow"
-        Title="Meta TextRedactor" Height="450" Width="800">
+        Title="TypoTamer" Height="450" Width="800">
     <StackPanel>
         <Grid x:Name="mainPanel"></Grid>
 
