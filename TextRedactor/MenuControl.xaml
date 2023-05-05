@@ -16,7 +16,7 @@
         </Menu>
         <Menu>
             <MenuItem Header="Edit">
-
+                <MenuItem Header="Print" Click="MenuItem_Print"/>
             </MenuItem>
         </Menu>
         <Menu>
