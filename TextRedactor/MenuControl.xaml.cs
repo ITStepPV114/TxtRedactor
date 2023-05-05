@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.ComponentModel;
+
+
 
 namespace TextRedactor
 {
@@ -74,24 +78,19 @@ namespace TextRedactor
 
         private void MenuItem_Click_Font(object sender, RoutedEventArgs e)
         {
-            //_________BROKEN
-            //FontDialog fontDialog = new FontDialog();
+            System.Windows.Forms.FontDialog fontDialog = new System.Windows.Forms.FontDialog();
 
-            //System.Drawing.Font currentFont = new System.Drawing.Font(
-            //    richTextBox.Selection.GetPropertyValue(TextElement.FontFamilyProperty).ToString(),
-            //    (double)richTextBox.Selection.GetPropertyValue(TextElement.FontSizeProperty),
-            //    (richTextBox.Selection.GetPropertyValue(TextElement.FontStyleProperty) != null) && ((FontStyle)richTextBox.Selection.GetPropertyValue(TextElement.FontStyleProperty)) == FontStyles.Italic ? FontStyle.Italic : FontStyle.Regular,
-            //    GraphicsUnit.Pixel);
-            //fontDialog.Font = currentFont.ToFont();
+            TextRange allTextRange = new TextRange(RichTextBox.Document.ContentStart, RichTextBox.Document.ContentEnd);
             
-            //if (fontDialog.ShowDialog() == DialogResult.OK)
-            //{ 
-            //    richTextBox.Selection.ApplyPropertyValue(TextElement.FontFamilyProperty, new FontFamily(fontDialog.Font.Name));
-            //    richTextBox.Selection.ApplyPropertyValue(TextElement.FontSizeProperty, fontDialog.Font.Size);
-            //    richTextBox.Selection.ApplyPropertyValue(TextElement.FontStyleProperty, (fontDialog.Font.Style & FontStyle.Italic) == FontStyle.Italic ? FontStyles.Italic : FontStyles.Normal);
-            //    richTextBox.Selection.ApplyPropertyValue(TextElement.FontWeightProperty, (fontDialog.Font.Style & FontStyle.Bold) == FontStyle.Bold ? FontWeights.Bold : FontWeights.Normal);
-            //    richTextBox.Selection.ApplyPropertyValue(TextElement.TextDecorationsProperty, (fontDialog.Font.Underline) ? TextDecorations.Underline : null);
-            //}
+            
+            if (fontDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                RichTextBox.Selection.ApplyPropertyValue(TextElement.FontFamilyProperty, new FontFamily(fontDialog.Font.Name));
+                RichTextBox.Selection.ApplyPropertyValue(RichTextBox.FontSizeProperty, (double)fontDialog.Font.Size);
+                RichTextBox.Selection.ApplyPropertyValue(TextElement.FontStyleProperty, (fontDialog.Font.Style & System.Drawing.FontStyle.Italic) == System.Drawing.FontStyle.Italic ? FontStyles.Italic : FontStyles.Normal);
+                RichTextBox.Selection.ApplyPropertyValue(TextElement.FontWeightProperty, (fontDialog.Font.Style & System.Drawing.FontStyle.Bold) == System.Drawing.FontStyle.Bold ? FontWeights.Bold : FontWeights.Normal);
+                RichTextBox.Selection.ApplyPropertyValue(Inline.TextDecorationsProperty, (fontDialog.Font.Underline) ? TextDecorations.Underline : null);
+            }
         }
     }
 }
