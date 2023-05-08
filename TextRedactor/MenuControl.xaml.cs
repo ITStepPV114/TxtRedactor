@@ -38,6 +38,7 @@ namespace TextRedactor
             RichTextBox = richTextBox;
         }
         string temp;
+        string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
         private void MenuItem_Click_open(object sender, RoutedEventArgs e)
         {
             var fileContent = string.Empty;
@@ -95,12 +96,25 @@ namespace TextRedactor
         {
             Microsoft.Win32.SaveFileDialog op = new Microsoft.Win32.SaveFileDialog();
             op.Filter = "PDF files (*.pdf)|*.pdf|Text files (*.txt)|*.txt|All files (*.*)|*.*";
-            
-            string fileText = new TextRange(RichTextBox.Document.ContentStart, RichTextBox.Document.ContentEnd).Text;
+
+            TextRange fileText = new TextRange(RichTextBox.Document.ContentStart, RichTextBox.Document.ContentEnd);
+
+            //if (op.ShowDialog() == true) 
+            //{
+            //    switch(System.IO.Path.GetExtension(op.FileName))
+            //    {
+            //        case ".txt":
+            //            using (var file = new FileStream(op.FileName,FileMode.OpenOrCreate))
+            //            {
+            //                fileText.Save(file,DataFormats.Text);
+            //            }
+            //            break;
+            //    }
+            //}
             if (op.ShowDialog() == true)
             {
 
-                File.WriteAllText(op.FileName, fileText);
+                File.WriteAllText(op.FileName, fileText.Text);
             }
         }
 
@@ -120,6 +134,18 @@ namespace TextRedactor
         private void MenuItem_Print(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void MenuItem_Html(object sender, RoutedEventArgs e)
+        {
+            string text = new TextRange(RichTextBox.Document.ContentStart, RichTextBox.Document.ContentEnd).Text;
+            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string filePath = desktopPath + "\\file.html";
+            using (StreamWriter writer = new StreamWriter(filePath))
+            {
+                writer.WriteLine(text);
+            }
+            MessageBox.Show("File saved successfully at filepath: " + filePath);
         }
     }
 }
