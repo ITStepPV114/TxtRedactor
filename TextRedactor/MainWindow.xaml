@@ -6,12 +6,14 @@
         xmlns:local="clr-namespace:TextRedactor"
         mc:Ignorable="d"
         x:Name="mainWindow"
-        Title="TypoTamer" Height="450" Width="800">
-    <StackPanel>
-        <Grid x:Name="mainPanel"></Grid>
+        Title="TypoTamer" Height="600" Width="920 ">
+    <Border Background="#272537">
+        <StackPanel>
+            <Grid x:Name="mainPanel"></Grid>
 
-        <RichTextBox Name="rtbEditor" SelectionChanged="rtbEditor_SelectionChanged">
-            
-        </RichTextBox>
-    </StackPanel>
+            <RichTextBox Name="rtbEditor" SelectionChanged="rtbEditor_SelectionChanged">
+
+            </RichTextBox>
+        </StackPanel>
+    </Border>
 </Window>

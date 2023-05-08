@@ -87,11 +87,23 @@ namespace TextRedactor
 
         private void MenuItem_Click_save(object sender, RoutedEventArgs e)
         {
-            string filePath = temp;            
-            string fileText = new TextRange(RichTextBox.Document.ContentStart, RichTextBox.Document.ContentEnd).Text; 
-            File.WriteAllText(filePath, fileText);
-        }
+            string filePath = temp;
+            string fileText = new TextRange(RichTextBox.Document.ContentStart, RichTextBox.Document.ContentEnd).Text;
+            if (File.Exists(filePath)) { File.WriteAllText(filePath, fileText); }//MessageBox.Show("File saved!"); }
+            else
+            {
+                Microsoft.Win32.SaveFileDialog op = new Microsoft.Win32.SaveFileDialog();
+                op.Filter = "PDF files (*.pdf)|*.pdf|Text files (*.txt)|*.txt|All files (*.*)|*.*";
 
+                TextRange fileText2 = new TextRange(RichTextBox.Document.ContentStart, RichTextBox.Document.ContentEnd);
+                if (op.ShowDialog() == true)
+                {
+
+                    File.WriteAllText(op.FileName, fileText2.Text);
+                }
+            }
+
+        }
         private void MenuItem_Click_saveAs(object sender, RoutedEventArgs e)
         {
             Microsoft.Win32.SaveFileDialog op = new Microsoft.Win32.SaveFileDialog();

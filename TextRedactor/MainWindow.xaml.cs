@@ -24,7 +24,8 @@ namespace TextRedactor
         {
             InitializeComponent();
             var menuControl = new MenuControl(rtbEditor);
-            mainPanel.Children.Add(menuControl); 
+            mainPanel.Children.Add(menuControl);
+            mainPanel.Background = new SolidColorBrush(Colors.DarkBlue);
         }
 
         private void rtbEditor_SelectionChanged(object sender, RoutedEventArgs e)
