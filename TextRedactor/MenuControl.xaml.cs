@@ -21,8 +21,7 @@ using iTextSharp.text.pdf.parser;
 using iTextSharp.text;
 using System.Drawing;
 using System.Drawing.Printing;
-
-
+using System.ComponentModel;
 
 namespace TextRedactor
 {
