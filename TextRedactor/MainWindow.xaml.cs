@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Org.BouncyCastle.Asn1.Cmp;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,9 +28,17 @@ namespace TextRedactor
             mainPanel.Children.Add(menuControl); 
         }
 
-        private void rtbEditor_SelectionChanged(object sender, RoutedEventArgs e)
+        private void rbtEditor_SelectionChanged(object sender, RoutedEventArgs e)
         {
+            int countSymbol = rtbEditor.Selection.Text.Length;
+			int countSlach = rtbEditor.Selection.Text.Split(new char[] {'\n'}).Length;
+			lblCursorPosition.Text = "Line " + (countSlach) + ", Char " + (countSymbol);
+            
+		}
 
-        }
+
+       
     }
+
+
 }

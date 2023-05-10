@@ -10,12 +10,13 @@
     <DockPanel>
         <Grid x:Name="mainPanel" DockPanel.Dock="Top"></Grid>
 
-        <StatusBar DockPanel.Dock="Bottom">
-            asdasd
-        </StatusBar>
-        
         <RichTextBox Name="rtbEditor" SelectionChanged="rtbEditor_SelectionChanged">
-            
         </RichTextBox>
+
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem>
+                <TextBlock Name="lblCursorPosition"/>
+            </StatusBarItem>
+        </StatusBar>
     </DockPanel>
 </Window>
