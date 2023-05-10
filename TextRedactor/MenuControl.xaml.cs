@@ -1,5 +1,7 @@
 using Microsoft.Win32;
 using System;
+using System.Windows.Documents;
+
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -21,7 +23,19 @@ using iTextSharp.text.pdf.parser;
 using iTextSharp.text;
 using System.Drawing;
 using System.Drawing.Printing;
-using System.ComponentModel;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Documents;
+using System.Windows.Xps.Packaging;
+using System.Printing;
+using System.Windows.Xps;
+using System.Printing;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Documents;
+using System.Windows.Xps;
+using System.Windows.Xps.Packaging;
+using System.Diagnostics;
 
 namespace TextRedactor
 {
@@ -145,6 +159,19 @@ namespace TextRedactor
 
         private void MenuItem_Print(object sender, RoutedEventArgs e)
         {
+
+
+            string filePath = "file.txt";
+            string fileText = new TextRange(RichTextBox.Document.ContentStart, RichTextBox.Document.ContentEnd).Text;
+            File.WriteAllText(filePath, fileText);
+
+            ProcessStartInfo psi = new ProcessStartInfo
+            {
+                FileName = filePath,
+                Verb = "Print"
+            };
+
+            Process.Start(psi);
 
         }
 

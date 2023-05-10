@@ -13,10 +13,11 @@
     <Border>
         <DockPanel>
             <Grid x:Name="mainPanel" DockPanel.Dock="Top"></Grid>
+            <StatusBar DockPanel.Dock="Bottom">
+            asdasd
+        </StatusBar>
             <RichTextBox Name="rtbEditor" SelectionChanged="rtbEditor_SelectionChanged"/>
-            <StatusBar>
-                sdfsdfsdf
-            </StatusBar>
+            
         </DockPanel>
         
     </Border>
