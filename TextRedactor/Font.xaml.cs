@@ -19,11 +19,20 @@ namespace TextRedactor
     /// </summary>
     public partial class Font : Window
     {
+        private string v1;
+        private int v2;
+
         public string selectedText { get; set; }
-        public Font(RichTextBox richTextBox)
+        public Font(string v, RichTextBox richTextBox)
         {
             InitializeComponent();
             selectedText = richTextBox.Selection.Text;
+        }
+
+        public Font(string v1, int v2)
+        {
+            this.v1 = v1;
+            this.v2 = v2;
         }
 
         private void fontComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
