@@ -7,11 +7,15 @@
         mc:Ignorable="d"
         x:Name="mainWindow"
         Title="TypoTamer" Height="450" Width="800">
-    <StackPanel>
-        <Grid x:Name="mainPanel"></Grid>
+    <DockPanel>
+        <Grid x:Name="mainPanel" DockPanel.Dock="Top"></Grid>
 
+        <StatusBar DockPanel.Dock="Bottom">
+            asdasd
+        </StatusBar>
+        
         <RichTextBox Name="rtbEditor" SelectionChanged="rtbEditor_SelectionChanged">
             
         </RichTextBox>
-    </StackPanel>
+    </DockPanel>
 </Window>
