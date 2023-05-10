@@ -6,27 +6,25 @@
              xmlns:local="clr-namespace:TextRedactor"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
-
-    
+    <Border>
     <DockPanel>
+        <CheckBox DockPanel.Dock="Right" x:Name="switchButton" Style="{StaticResource SwitchStyle}" Click="switchButton_Click" HorizontalAlignment="Right"/>
         
-
-        <Menu Background="#0f0f2d" Foreground="Wheat">
+        <Menu HorizontalAlignment="Stretch" DockPanel.Dock="Top">
             <MenuItem Header="File">
-                <MenuItem Header="Open" Background="#0f0f2d" Click="MenuItem_Click_open"/>
-                <MenuItem Header="Save" Background="#0f0f2d" Click="MenuItem_Click_save"/>
-                <MenuItem Header="Save As" Background="#0f0f2d" Click="MenuItem_Click_saveAs"/>
-                <MenuItem Header="Print" Background="#0f0f2d" Click="MenuItem_Print"/>
+                <MenuItem Header="Open" Click="MenuItem_Click_open"/>
+                <MenuItem Header="Save" Click="MenuItem_Click_save"/>
+                <MenuItem Header="Save As" Click="MenuItem_Click_saveAs"/>
+                <MenuItem Header="Print" Click="MenuItem_Print"/>
             </MenuItem>
             <MenuItem Header="Edit">
-                <MenuItem Header="Font" Background="#0f0f2d" Click="MenuItem_Click_Font"/>
-                <MenuItem Header="Html" Background="#0f0f2d" Click="MenuItem_Html"/>
+                <MenuItem Header="Font" Click="MenuItem_Click_Font"/>
+                <MenuItem Header="Html" Click="MenuItem_Html"/>
             </MenuItem>
-            <MenuItem Header="View"></MenuItem>
-            <MenuItem Header="Help"></MenuItem>
         </Menu>
 
         
+
     </DockPanel>
-    
+    </Border>
 </UserControl>

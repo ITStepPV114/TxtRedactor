@@ -35,6 +35,7 @@ namespace TextRedactor
         {
             InitializeComponent();
             RichTextBox = richTextBox;
+
         }
         string temp;
         string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
@@ -157,6 +158,29 @@ namespace TextRedactor
                 writer.WriteLine(text);
             }
             MessageBox.Show("File saved successfully at filepath: " + filePath);
+        }
+
+        private void switchButton_Click(object sender, RoutedEventArgs e)
+        {
+            Uri uriLight = new Uri("Theme/light.xaml",UriKind.Relative);
+            Uri uriDark = new Uri("Theme/dark.xaml",UriKind.Relative);
+            MainWindow mw = Application.Current.MainWindow as MainWindow;
+            if(switchButton.IsChecked== false) 
+            {
+                mw.Resources = new ResourceDictionary()
+                {
+                    Source = uriLight
+                };
+            }
+            else
+            {
+                mw.Resources = new ResourceDictionary()
+                {
+                    Source = uriDark
+                };
+            }
+
+            MessageBox.Show("Click");
         }
     }
 }

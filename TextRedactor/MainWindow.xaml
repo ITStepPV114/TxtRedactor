@@ -7,13 +7,17 @@
         mc:Ignorable="d"
         x:Name="mainWindow"
         Title="TypoTamer" Height="600" Width="920 ">
+    <Window.Resources>
+        <ResourceDictionary Source="Theme/light.xaml" />
+    </Window.Resources>
     <Border>
-        <StackPanel>
-            <Grid x:Name="mainPanel"></Grid>
-
-            <RichTextBox Name="rtbEditor" Background="#272537" Foreground="White" Height="{Binding ElementName=mainWindow,Path=ActualHeight}" SelectionChanged="rtbEditor_SelectionChanged">
-
-            </RichTextBox>
-        </StackPanel>
+        <DockPanel>
+            <Grid x:Name="mainPanel" DockPanel.Dock="Top"></Grid>
+            <RichTextBox Name="rtbEditor" SelectionChanged="rtbEditor_SelectionChanged"/>
+            <StatusBar>
+                sdfsdfsdf
+            </StatusBar>
+        </DockPanel>
+        
     </Border>
 </Window>
