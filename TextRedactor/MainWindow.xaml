@@ -18,10 +18,12 @@
     <Border>
         <DockPanel>
             <Grid x:Name="mainPanel" DockPanel.Dock="Top"></Grid>
-            <StatusBar DockPanel.Dock="Bottom">
-            asdasd
-        </StatusBar>
-            <RichTextBox Name="rtbEditor" SelectionChanged="rtbEditor_SelectionChanged"/>
+            <StatusBar DockPanel.Dock="Bottom" Height="30" VerticalAlignment="Bottom">
+                <StatusBarItem>
+                    <TextBlock x:Name="statusText" Text="Ready"/>
+                </StatusBarItem>
+            </StatusBar>
+            <RichTextBox Name="rtbEditor" TextChanged="rtbEditor_TextChanged"/>
             
         </DockPanel>
         
