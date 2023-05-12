@@ -55,7 +55,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal" Background="#ffffff">
                         <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         <Border x:Name="on" Width="30" Height="25" Background="LightGray" CornerRadius="2,0,0,4" Margin="10,0,0,0">
                             <TextBlock x:Name="onText" Text="Light" HorizontalAlignment="Center" VerticalAlignment="Center"/>

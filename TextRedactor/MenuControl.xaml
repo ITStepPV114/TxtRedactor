@@ -9,7 +9,7 @@
     <Border BorderThickness="1" BorderBrush="Black">
     <DockPanel>
         <!--<CheckBox DockPanel.Dock="Right" x:Name="switchButton" Style="{StaticResource SwitchStyle}" Click="switchButton_Click" HorizontalAlignment="Right"/>-->
-            <ToggleButton DockPanel.Dock="Right" Style="{StaticResource ToggleButtonStyle1}"/>
+            <ToggleButton x:Name="toggleBtn" DockPanel.Dock="Right" IsChecked="True" Click="ToggleButton_Click" Style="{StaticResource ToggleButtonStyle1}"/>
         <Menu HorizontalAlignment="Stretch" DockPanel.Dock="Top">
             <MenuItem Header="File">
                 <MenuItem Header="Open" Click="MenuItem_Click_open"/>

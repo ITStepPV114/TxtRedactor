@@ -159,9 +159,8 @@ namespace TextRedactor
 
         private void MenuItem_Print(object sender, RoutedEventArgs e)
         {
-
-
-            string filePath = "file.txt";
+            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string filePath = desktopPath + "\\file.txt";
             string fileText = new TextRange(RichTextBox.Document.ContentStart, RichTextBox.Document.ContentEnd).Text;
             File.WriteAllText(filePath, fileText);
 
@@ -170,8 +169,6 @@ namespace TextRedactor
                 FileName = filePath,
                 Verb = "Print"
             };
-
-            Process.Start(psi);
 
         }
 
@@ -187,6 +184,28 @@ namespace TextRedactor
             MessageBox.Show("File saved successfully at filepath: " + filePath);
         }
 
-        
+        private void ToggleButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mw = Application.Current.MainWindow as MainWindow;
+
+
+            if (toggleBtn.IsChecked == true) 
+            {
+                ResourceDictionary rd = new ResourceDictionary()
+                {
+                    Source = new Uri("Theme/light.xaml", UriKind.Relative)
+                };
+
+                mw.Resources = rd;
+            }
+            else
+            {
+                ResourceDictionary rd = new ResourceDictionary()
+                {
+                    Source = new Uri("Theme/dark.xaml", UriKind.Relative)
+                };
+                mw.Resources = rd;
+            }
+        }
     }
 }

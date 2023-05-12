@@ -7,6 +7,11 @@
         mc:Ignorable="d"
         x:Name="mainWindow"
         Title="TypoTamer" Height="600" Width="920 ">
+    <Window.Style>
+        <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}">
+            
+        </Style>
+    </Window.Style>
     <Window.Resources>
         <ResourceDictionary Source="Theme/light.xaml" />
     </Window.Resources>
