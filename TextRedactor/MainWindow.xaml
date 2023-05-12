@@ -6,16 +6,24 @@
         xmlns:local="clr-namespace:TextRedactor"
         mc:Ignorable="d"
         x:Name="mainWindow"
-        Title="TypoTamer" Height="450" Width="800">
-    <DockPanel>
-        <Grid x:Name="mainPanel" DockPanel.Dock="Top"></Grid>
-
-        <StatusBar DockPanel.Dock="Bottom">
+        Title="TypoTamer" Height="600" Width="920 ">
+    <Window.Style>
+        <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}">
+            
+        </Style>
+    </Window.Style>
+    <Window.Resources>
+        <ResourceDictionary Source="Theme/light.xaml" />
+    </Window.Resources>
+    <Border>
+        <DockPanel>
+            <Grid x:Name="mainPanel" DockPanel.Dock="Top"></Grid>
+            <StatusBar DockPanel.Dock="Bottom">
             asdasd
         </StatusBar>
-        
-        <RichTextBox Name="rtbEditor" SelectionChanged="rtbEditor_SelectionChanged">
+            <RichTextBox Name="rtbEditor" SelectionChanged="rtbEditor_SelectionChanged"/>
             
-        </RichTextBox>
-    </DockPanel>
+        </DockPanel>
+        
+    </Border>
 </Window>

@@ -4,27 +4,27 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TextRedactor"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
+    <Border BorderThickness="1" BorderBrush="Black">
     <DockPanel>
-        <Menu>
+        <!--<CheckBox DockPanel.Dock="Right" x:Name="switchButton" Style="{StaticResource SwitchStyle}" Click="switchButton_Click" HorizontalAlignment="Right"/>-->
+            <ToggleButton x:Name="toggleBtn" DockPanel.Dock="Right" IsChecked="True" Click="ToggleButton_Click" Style="{StaticResource ToggleButtonStyle1}"/>
+        <Menu HorizontalAlignment="Stretch" DockPanel.Dock="Top">
             <MenuItem Header="File">
                 <MenuItem Header="Open" Click="MenuItem_Click_open"/>
                 <MenuItem Header="Save" Click="MenuItem_Click_save"/>
                 <MenuItem Header="Save As" Click="MenuItem_Click_saveAs"/>
-            </MenuItem>
-        </Menu>
-        <Menu>
-            <MenuItem Header="Edit">
                 <MenuItem Header="Print" Click="MenuItem_Print"/>
-                <MenuItem Header="Font"  Click="MenuItem_Click_Font"/>
+            </MenuItem>
+            <MenuItem Header="Edit">
+                <MenuItem Header="Font" Click="MenuItem_Click_Font"/>
                 <MenuItem Header="Html" Click="MenuItem_Html"/>
             </MenuItem>
         </Menu>
-        <Menu>
-            <MenuItem Header="Help">
 
-            </MenuItem>
-        </Menu>
+        
+
     </DockPanel>
+    </Border>
 </UserControl>

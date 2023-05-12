@@ -20,11 +20,16 @@ namespace TextRedactor
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
+            this.Resources = new ResourceDictionary()
+            {
+                Source = new Uri("Theme/light.xaml",UriKind.Relative)
+            };
             var menuControl = new MenuControl(rtbEditor);
-            mainPanel.Children.Add(menuControl); 
+            mainPanel.Children.Add(menuControl);
         }
 
         private void rtbEditor_SelectionChanged(object sender, RoutedEventArgs e)

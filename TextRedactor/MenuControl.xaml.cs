@@ -49,6 +49,7 @@ namespace TextRedactor
         {
             InitializeComponent();
             RichTextBox = richTextBox;
+
         }
         string temp;
         string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
@@ -100,11 +101,23 @@ namespace TextRedactor
 
         private void MenuItem_Click_save(object sender, RoutedEventArgs e)
         {
-            string filePath = temp;            
-            string fileText = new TextRange(RichTextBox.Document.ContentStart, RichTextBox.Document.ContentEnd).Text; 
-            File.WriteAllText(filePath, fileText);
-        }
+            string filePath = temp;
+            string fileText = new TextRange(RichTextBox.Document.ContentStart, RichTextBox.Document.ContentEnd).Text;
+            if (File.Exists(filePath)) { File.WriteAllText(filePath, fileText); }//MessageBox.Show("File saved!"); }
+            else
+            {
+                Microsoft.Win32.SaveFileDialog op = new Microsoft.Win32.SaveFileDialog();
+                op.Filter = "PDF files (*.pdf)|*.pdf|Text files (*.txt)|*.txt|All files (*.*)|*.*";
 
+                TextRange fileText2 = new TextRange(RichTextBox.Document.ContentStart, RichTextBox.Document.ContentEnd);
+                if (op.ShowDialog() == true)
+                {
+
+                    File.WriteAllText(op.FileName, fileText2.Text);
+                }
+            }
+
+        }
         private void MenuItem_Click_saveAs(object sender, RoutedEventArgs e)
         {
             Microsoft.Win32.SaveFileDialog op = new Microsoft.Win32.SaveFileDialog();
@@ -146,9 +159,8 @@ namespace TextRedactor
 
         private void MenuItem_Print(object sender, RoutedEventArgs e)
         {
-
-
-            string filePath = "file.txt";
+            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string filePath = desktopPath + "\\file.txt";
             string fileText = new TextRange(RichTextBox.Document.ContentStart, RichTextBox.Document.ContentEnd).Text;
             File.WriteAllText(filePath, fileText);
 
@@ -157,8 +169,6 @@ namespace TextRedactor
                 FileName = filePath,
                 Verb = "Print"
             };
-
-            Process.Start(psi);
 
         }
 
@@ -172,6 +182,30 @@ namespace TextRedactor
                 writer.WriteLine(text);
             }
             MessageBox.Show("File saved successfully at filepath: " + filePath);
+        }
+
+        private void ToggleButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mw = Application.Current.MainWindow as MainWindow;
+
+
+            if (toggleBtn.IsChecked == true) 
+            {
+                ResourceDictionary rd = new ResourceDictionary()
+                {
+                    Source = new Uri("Theme/light.xaml", UriKind.Relative)
+                };
+
+                mw.Resources = rd;
+            }
+            else
+            {
+                ResourceDictionary rd = new ResourceDictionary()
+                {
+                    Source = new Uri("Theme/dark.xaml", UriKind.Relative)
+                };
+                mw.Resources = rd;
+            }
         }
     }
 }
