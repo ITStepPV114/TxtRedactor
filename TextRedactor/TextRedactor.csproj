@@ -8,6 +8,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="images\cta.png" />
+    <None Remove="images\lta.png" />
+    <None Remove="images\rta.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="images\cta.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\lta.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\rta.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="iTextSharp" Version="5.5.13.3" />
     <PackageReference Include="Ookii.Dialogs.Wpf" Version="5.0.1" />
     <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
@@ -18,7 +36,6 @@
     <Folder Include="MVVM\Model\" />
     <Folder Include="MVVM\Viewmodel\" />
     <Folder Include="MVVM\View\" />
-    <Folder Include="images\" />
   </ItemGroup>
 
 

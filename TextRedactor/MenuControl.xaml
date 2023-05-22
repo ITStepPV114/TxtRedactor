@@ -22,14 +22,14 @@
                 <MenuItem Header="Font" Click="MenuItem_Click_Font"/>
                 <MenuItem Header="Html" Click="MenuItem_Html"/> 
             </MenuItem>
-                <Button x:Name="paragraphLeft" Width="20" Click="paragraphLeft_Click">
-                    <Image Source="images/lta.png"></Image>
+                <Button x:Name="alignLeft" Width="20" Click="alignLeft_Click">
+                    <Image Source="pack://application:,,,/images/lta.png"></Image>
                 </Button>
-                <Button x:Name="paragraphCenter" Width="20" Click="paragraphCenter_Click">
-                    <Image Source="images/cta.png"></Image>
+                <Button x:Name="alignCenter" Width="20" Click="alignCenter_Click">
+                    <Image Source="pack://application:,,,/images/cta.png"></Image>
                 </Button>
-                <Button x:Name="paragraphRight" Width="20" Click="paragraphRight_Click">
-                    <Image Source="images/rta.png"></Image>
+                <Button x:Name="alignRight" Width="20" Click="alignRight_Click">
+                    <Image Source="pack://application:,,,/images/rta.png" ></Image>
                 </Button>
                 
                 
