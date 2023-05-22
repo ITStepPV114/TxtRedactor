@@ -32,6 +32,7 @@ namespace TextRedactor
             var menuControl = new MenuControl(rtbEditor);
             mainPanel.Children.Add(menuControl);
             rtbEditor.Document.LineHeight = 3;
+            menuControl.paragraphCenter.
             //BlockCollection rtbBc = rtbEditor.Document.Blocks;
             //foreach(var block in rtbBc) 
             //{

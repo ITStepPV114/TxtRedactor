@@ -18,6 +18,7 @@
     <Folder Include="MVVM\Model\" />
     <Folder Include="MVVM\Viewmodel\" />
     <Folder Include="MVVM\View\" />
+    <Folder Include="images\" />
   </ItemGroup>
 
 

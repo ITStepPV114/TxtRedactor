@@ -20,11 +20,19 @@
             </MenuItem>
             <MenuItem Header="Edit">
                 <MenuItem Header="Font" Click="MenuItem_Click_Font"/>
-                <MenuItem Header="Html" Click="MenuItem_Html"/>
+                <MenuItem Header="Html" Click="MenuItem_Html"/> 
             </MenuItem>
-                <Button x:Name="paragraphRight" Width="20"></Button>
-                <Button x:Name="paragraphCenter" Width="20"></Button>
-                <Button x:Name="paragraphLeft" Width="20"></Button>
+                <Button x:Name="paragraphLeft" Width="20" Click="paragraphLeft_Click">
+                    <Image Source="images/lta.png"></Image>
+                </Button>
+                <Button x:Name="paragraphCenter" Width="20" Click="paragraphCenter_Click">
+                    <Image Source="images/cta.png"></Image>
+                </Button>
+                <Button x:Name="paragraphRight" Width="20" Click="paragraphRight_Click">
+                    <Image Source="images/rta.png"></Image>
+                </Button>
+                
+                
             </Menu>
             
 

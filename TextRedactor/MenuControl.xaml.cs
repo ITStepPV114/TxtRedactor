@@ -207,5 +207,32 @@ namespace TextRedactor
                 mw.Resources = rd;
             }
         }
+
+        private void alignRight_Click(object sender, RoutedEventArgs e)
+        {
+            BlockCollection rtbBc = RichTextBox.Document.Blocks;
+            foreach (var block in rtbBc)
+            {
+                block.TextAlignment = TextAlignment.Right;
+            }
+        }
+
+        private void alignCenter_Click(object sender, RoutedEventArgs e)
+        {
+            BlockCollection rtbBc = RichTextBox.Document.Blocks;
+            foreach (var block in rtbBc)
+            {
+                block.TextAlignment = TextAlignment.Center;
+            }
+        }
+
+        private void alignLeft_Click(object sender, RoutedEventArgs e)
+        {
+            BlockCollection rtbBc = RichTextBox.Document.Blocks;
+            foreach (var block in rtbBc)
+            {
+                block.TextAlignment = TextAlignment.Left;
+            }
+        }
     }
 }
